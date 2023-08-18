@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import SelectionTabs from "./components/SelectionTabs";
 
 function App() {
   const [title, setTitle] = useState("");
@@ -14,19 +15,12 @@ function App() {
   }
 
   return (
-    <div>
-      <form onSubmit={handleCreateClick}>
-        <label htmlFor="decktitle">Deck Title</label>
-        <input
-          id="decktitle"
-          value={title}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setTitle(e.target.value);
-          }}
-        ></input>
-        <button>Create Deck</button>
-      </form>
-    </div>
+    <SelectionTabs
+      title={"Title"}
+      tabIndex={1}
+      onChange={handleCreateClick}
+      style={{ justifySelf: "left" }}
+    />
   );
 }
 

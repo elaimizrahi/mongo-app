@@ -1,45 +1,52 @@
-import React from "react"
-import { Map, Marker } from "pigeon-maps"
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React from "react";
+import GoogleMapReact from "google-map-react";
 
 function MapPage() {
+  const markers: string[] = [];
 
-    const [map, setMap] = React.useState(null);
-    const markers : string[] = [];
+  const setMarkers = function (markers: string[], e: any) {
+    markers.push(e);
+  };
 
-    const setMarkers = function (markers: string[], e: any){
-        markers.push(e);
-    }
+  const generateKey = (pre: string) => {
+    return `${pre}_${new Date().getTime()}`;
+  };
+  const addMemory = (e: any) => {
+    setMarkers(markers, e);
+    console.log(markers, "markers");
+    localStorage.setItem(generateKey("memory"), JSON.stringify(e));
+  };
 
-    
+  const logEvent = (e: any) => {
+    console.log(e);
+    addMemory(e);
+  };
+  function displayMarkers(markers: string[]) {
+    console.log(markers, "markers1");
+    return <div />;
+  }
+  const defaultProps = {
+    center: {
+      lat: 10.99835602,
+      lng: 77.01502627,
+    },
+    zoom: 11,
+  };
 
-    const generateKey = (pre: string) => {
-        return `${ pre }_${ new Date().getTime() }`;
-    }
-    const addMemory = (e: any) => {
-        setMarkers(markers, e);
-        console.log(markers,"markers");
-        localStorage.setItem(generateKey("memory"), JSON.stringify(e));
-    }
-
-    const logEvent = (e: any) => {
-        console.log(e);
-        addMemory(e);
-    }
-    function displayMarkers (markers: string[]) {
-        console.log(markers, "markers1");
-            return (
-                <div/>
-            )
-        
-    }
-
+  const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
   return (
-    <Map height={300} defaultCenter={[50.879, 20.6997]} defaultZoom={11} onClick={logEvent}>
-        {displayMarkers(markers)}
-      <Marker width={50} anchor={[43.4643, -80.5204]} />
-    </Map>
-  )
+    <div style={{ height: "100vh", width: "100%" }}>
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: "" }}
+        defaultCenter={defaultProps.center}
+        defaultZoom={defaultProps.zoom}
+      >
+        <AnyReactComponent lat={59.955413} lng={30.337844} text="My Marker" />
+      </GoogleMapReact>
+    </div>
+  );
 }
 
-export default MapPage
+export default MapPage;
