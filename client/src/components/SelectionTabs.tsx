@@ -14,8 +14,10 @@ interface TabPanelProps {
 
 const tabsStyle = {
   outlineStyle: "none",
-  color: COLORS.forestgreen[2],
+  color: COLORS.white,
   underlineStyle: "none",
+  fontSize: "16px",
+  fontFamily: "Avenir",
 };
 
 function CustomTabPanel(props: TabPanelProps) {

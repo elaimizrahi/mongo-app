@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./App.css";
 import BasicTabs from "./components/SelectionTabs";
-import { Topbar } from "./components/Topbar";
-import Input from "@mui/material/Input";
+import Topbar from "./components/Topbar";
 import Stack from "@mui/material/Stack";
+import ProfileDropdown from "./components/ProfileDropdown";
 function App() {
   const [title, setTitle] = useState("");
 
@@ -20,9 +20,9 @@ function App() {
     <div>
       <Topbar>
         {" "}
-        <Stack direction="row">
+        <Stack direction="row" style={{ justifyContent: "space-between" }}>
           <BasicTabs />
-          <Input />{" "}
+          <ProfileDropdown />
         </Stack>
       </Topbar>
     </div>
