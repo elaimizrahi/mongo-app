@@ -1,7 +1,9 @@
 import { useState } from "react";
 import "./App.css";
-import SelectionTabs from "./components/SelectionTabs";
-
+import BasicTabs from "./components/SelectionTabs";
+import { Topbar } from "./components/Topbar";
+import Input from "@mui/material/Input";
+import Stack from "@mui/material/Stack";
 function App() {
   const [title, setTitle] = useState("");
 
@@ -15,12 +17,15 @@ function App() {
   }
 
   return (
-    <SelectionTabs
-      title={"Title"}
-      tabIndex={1}
-      onChange={handleCreateClick}
-      style={{ justifySelf: "left" }}
-    />
+    <div>
+      <Topbar>
+        {" "}
+        <Stack direction="row">
+          <BasicTabs />
+          <Input />{" "}
+        </Stack>
+      </Topbar>
+    </div>
   );
 }
 

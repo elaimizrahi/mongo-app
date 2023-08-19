@@ -166,7 +166,7 @@ const linksMockdata = [
   "Wiki pages",
 ];
 
-export function DoubleNavbar() {
+export default function DoubleNavbar() {
   const { classes, cx } = useStyles();
   const [active, setActive] = useState("Releases");
   const [activeLink, setActiveLink] = useState("Settings");

@@ -3,6 +3,8 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import { COLORS } from "../constants";
+import Input from "@mui/material/Input";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -12,6 +14,8 @@ interface TabPanelProps {
 
 const tabsStyle = {
   outlineStyle: "none",
+  color: COLORS.forestgreen[2],
+  underlineStyle: "none",
 };
 
 function CustomTabPanel(props: TabPanelProps) {
@@ -24,10 +28,11 @@ function CustomTabPanel(props: TabPanelProps) {
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
       {...other}
+      color="green"
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <Typography color={COLORS.gray}>{children}</Typography>
         </Box>
       )}
     </div>
@@ -61,7 +66,7 @@ export default function BasicTabs() {
   };
 
   return (
-    <Box sx={{ width: "100%", justifySelf: "left" }}>
+    <Box sx={{}}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs
           value={value}
@@ -73,15 +78,6 @@ export default function BasicTabs() {
           <Tab label="Meditation" style={tabsStyle} />
         </Tabs>
       </Box>
-      <CustomTabPanel value={value} index={0}>
-        Journals
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-        Progress
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
-        Meditation
-      </CustomTabPanel>
     </Box>
   );
 }
